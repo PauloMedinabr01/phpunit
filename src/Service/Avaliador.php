@@ -10,8 +10,11 @@ use Alura\Leilao\Model\Leilao;
  */
 class Avaliador
 {
-    /** @var mixed */
-    private mixed $maiorValor = -INF;
+    /** @var float */
+    private float $maiorValor = -INF;
+
+    /** @var float */
+    private float $menorvalor = INF;
 
     /**
      * @param Leilao $leilao
@@ -22,14 +25,25 @@ class Avaliador
             if ($lance->obterValor() > $this->maiorValor) {
                 $this->maiorValor = $lance->obterValor();
             }
+            if ($lance->obterValor() < $this->menorvalor) {
+                $this->menorvalor = $lance->obterValor();
+            }
         }
     }
 
     /**
-     * @return mixed
+     * @return float
      */
-    public function obterMaiorValor(): mixed
+    public function obterMaiorValor(): float
     {
         return $this->maiorValor;
+    }
+
+    /**
+     * @return float
+     */
+    public function obterMenorValor(): float
+    {
+        return $this->menorvalor;
     }
 }
