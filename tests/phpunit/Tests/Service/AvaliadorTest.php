@@ -64,8 +64,8 @@ class AvaliadorTest extends TestCase
         $maria = new Usuario('Maria');
         $joao = new Usuario('João');
 
-        $leilao->recebeLance(new Lance ($maria, 2500));
-        $leilao->recebeLance(new Lance ($joao, 2000));
+        $leilao->recebeLance(new Lance ($maria, 2000));
+        $leilao->recebeLance(new Lance ($joao, 2500));
 
         $leiloeiro = new Avaliador();
 
@@ -87,8 +87,8 @@ class AvaliadorTest extends TestCase
         $maria = new Usuario('Maria');
         $joao = new Usuario('João');
 
-        $leilao->recebeLance(new Lance ($maria, 2000));
-        $leilao->recebeLance(new Lance ($joao, 2500));
+        $leilao->recebeLance(new Lance ($maria, 2500));
+        $leilao->recebeLance(new Lance ($joao, 2000));
 
         $leiloeiro = new Avaliador();
 
