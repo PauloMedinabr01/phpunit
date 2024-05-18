@@ -16,6 +16,9 @@ class Avaliador
     /** @var float */
     private float $menorvalor = INF;
 
+    /** @var array */
+    private array $maioresLances;
+
     /**
      * @param Leilao $leilao
      */
@@ -29,6 +32,13 @@ class Avaliador
                 $this->menorvalor = $lance->obterValor();
             }
         }
+
+        $lances = $leilao->obterLances();
+        usort($lances, function ($lance1, $lance2) {
+            $lance1->obterValor() - $lance2->obterValor();
+        });
+
+        $this->maioresLances = array_slice($lances, 0, 3);
     }
 
     /**
@@ -45,5 +55,13 @@ class Avaliador
     public function obterMenorValor(): float
     {
         return $this->menorvalor;
+    }
+
+    /**
+     * @return array
+     */
+    public function obterMaioresLances(): array
+    {
+        return $this->maioresLances;
     }
 }
