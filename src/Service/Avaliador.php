@@ -11,16 +11,18 @@ use Alura\Leilao\Model\Leilao;
 class Avaliador
 {
     /** @var mixed */
-    private mixed $maiorValor;
+    private mixed $maiorValor = -INF;
 
     /**
      * @param Leilao $leilao
      */
     public function avaliarLeilao(Leilao $leilao): void
     {
-        $lances = $leilao->obterLances();
-        $ultimoLance = $lances[count($lances) - 1];
-        $this->maiorValor = $ultimoLance->obterValor();
+        foreach ($leilao->obterLances() as $lance) {
+            if ($lance->obterValor() > $this->maiorValor) {
+                $this->maiorValor = $lance->obterValor();
+            }
+        }
     }
 
     /**
