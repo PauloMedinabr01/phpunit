@@ -34,8 +34,9 @@ class Avaliador
         }
 
         $lances = $leilao->obterLances();
+
         usort($lances, function ($lance1, $lance2) {
-            $lance1->obterValor() - $lance2->obterValor();
+            return $lance2->obterValor() - $lance1->obterValor();
         });
 
         $this->maioresLances = array_slice($lances, 0, 3);
