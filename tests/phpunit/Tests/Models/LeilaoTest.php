@@ -46,4 +46,16 @@ class LeilaoTest extends TestCase
         }
     }
 
+    public function testLeilaoNaoDeveReceberLancesRepetidos()
+    {
+        $leilao = new Leilao('Variante 0KM');
+        $ana = new Usuario('Ana');
+
+        $leilao->recebeLance(new Lance($ana, 1000));
+        $leilao->recebeLance(new Lance($ana, 1500));
+
+        $this->assertCount(1, $leilao->obterLances());
+        $this->assertEquals(1000, $leilao->obterLances()[0]->obterValor());
+    }
+
 }
