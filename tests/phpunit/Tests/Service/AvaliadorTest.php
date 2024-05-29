@@ -11,6 +11,17 @@ use PHPUnit\Framework\TestCase;
 
 class AvaliadorTest extends TestCase
 {
+    /** @var Avaliador */
+    private Avaliador $leiloeiro;
+
+    /**
+     * Método executado antes de cada teste.
+     */
+    protected function setUp(): void
+    {
+        $this->leiloeiro = new Avaliador();
+    }
+
     /**
      * Método auxiliar para criar um cenário de leilão em ordem crescente.
      * @return Leilao[]
@@ -79,13 +90,10 @@ class AvaliadorTest extends TestCase
     #[DataProvider('leilaoEmOrdemAleatoria')]
     public function testAvaliadorDeveEncontrarMaiorValorDeLances(Leilao $leilao)
     {
-        // Arrange - Given / Cenário de leilão
-        $leiloeiro = new Avaliador();
-
         // Act - When / Executar a ação a ser testada
-        $leiloeiro->avaliarLeilao($leilao);
+        $this->leiloeiro->avaliarLeilao($leilao);
 
-        $maiorValor = $leiloeiro->obterMaiorValor();
+        $maiorValor = $this->leiloeiro->obterMaiorValor();
 
         // Assert - Then / Verificação do resultado
         $valorEsperado = 3000;
@@ -97,13 +105,10 @@ class AvaliadorTest extends TestCase
     #[DataProvider('leilaoEmOrdemAleatoria')]
     public function testAvaliadorDeveEncontrarMaiorValorOrdemDecrescente(Leilao $leilao)
     {
-        // Arrange - Given / Preparação do cenário
-        $leiloeiro = new Avaliador();
-
         // Act - When / Executar a ação a ser testada
-        $leiloeiro->avaliarLeilao($leilao);
+        $this->leiloeiro->avaliarLeilao($leilao);
 
-        $maiorValor = $leiloeiro->obterMaiorValor();
+        $maiorValor = $this->leiloeiro->obterMaiorValor();
 
         // Assert - Then / Verificação do resultado
         $valorEsperado = 3000;
@@ -115,13 +120,10 @@ class AvaliadorTest extends TestCase
     #[DataProvider('leilaoEmOrdemAleatoria')]
     public function testAvaliadorDeveEncontrarMenorValorOrdemCrescente(Leilao $leilao)
     {
-        // Arrange - Given / Cenário
-        $leiloeiro = new Avaliador();
-
         // Act - When / Executar a ação a ser testada
-        $leiloeiro->avaliarLeilao($leilao);
+        $this->leiloeiro->avaliarLeilao($leilao);
 
-        $maiorValor = $leiloeiro->obterMenorValor();
+        $maiorValor = $this->leiloeiro->obterMenorValor();
 
         // Assert - Then / Verificação do resultado
         $valorEsperado = 1000;
@@ -133,13 +135,10 @@ class AvaliadorTest extends TestCase
     #[DataProvider('leilaoEmOrdemAleatoria')]
     public function testAvaliadorDeveBuscarOsTresMaioresLances(Leilao $leilao)
     {
-        // Arrange - Given / Cenário
-        $leiloeiro = new Avaliador();
-
         // Act - When / Executar a ação a ser testada
-        $leiloeiro->avaliarLeilao($leilao);
+        $this->leiloeiro->avaliarLeilao($leilao);
 
-        $maioresLances = $leiloeiro->obterMaioresLances();
+        $maioresLances = $this->leiloeiro->obterMaioresLances();
 
         // Assert - Then / Verificação do resultado
         static::assertCount(3, $maioresLances);
