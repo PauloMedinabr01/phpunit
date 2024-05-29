@@ -46,6 +46,9 @@ class LeilaoTest extends TestCase
         }
     }
 
+    /**
+     * @return void
+     */
     public function testLeilaoNaoDeveReceberLancesRepetidos()
     {
         $leilao = new Leilao('Variante 0KM');
@@ -58,4 +61,34 @@ class LeilaoTest extends TestCase
         $this->assertEquals(1000, $leilao->obterLances()[0]->obterValor());
     }
 
+    /**
+     * @return void
+     */
+    public function testLeilaoNaoDeveAceitarMaisDe5LancesPorUsuario()
+    {
+        $leilao = new Leilao('Brasília Amarela 0KM');
+        $joao = new Usuario('João');
+        $maria = new Usuario('Maria');
+
+        $leilao->recebeLance(new Lance($joao, 1000));
+        $leilao->recebeLance(new Lance($maria, 1500));
+
+        $leilao->recebeLance(new Lance($joao, 2000));
+        $leilao->recebeLance(new Lance($maria, 2500));
+
+        $leilao->recebeLance(new Lance($joao, 3000));
+        $leilao->recebeLance(new Lance($maria, 3500));
+
+        $leilao->recebeLance(new Lance($joao, 4000));
+        $leilao->recebeLance(new Lance($maria, 4500));
+
+        $leilao->recebeLance(new Lance($joao, 5000));
+        $leilao->recebeLance(new Lance($maria, 5500));
+
+        // deve ser ignorado
+        $leilao->recebeLance(new Lance($joao, 6000));
+
+        $this->assertCount(10, $leilao->obterLances());
+        $this->assertEquals(5500, $leilao->obterLances()[array_key_last($leilao->obterLances())]->obterValor());
+    }
 }
