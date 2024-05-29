@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="vendor/autoload.php" colors="true"
+         testdox="true" stopOnFailure="false" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.2/phpunit.xsd"
+         cacheDirectory=".phpunit.cache">
+    <testsuites>
+        <testsuite name="Testes">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <logging>
+        <testdoxHtml outputFile="tests/phpunit/_output/testdox.html"/>
+        <testdoxText outputFile="tests/phpunit/_output/testdox.txt"/>
+    </logging>
+</phpunit>

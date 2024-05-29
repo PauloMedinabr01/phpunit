@@ -1,0 +1,19 @@
+Avaliador (phpunit\Tests\Service\Avaliador)
+ [x] Avaliador deve encontrar maior valor de lances with data set #0
+ [x] Avaliador deve encontrar maior valor de lances with data set #1
+ [x] Avaliador deve encontrar maior valor de lances with data set #2
+ [x] Avaliador deve encontrar maior valor ordem decrescente with data set #0
+ [x] Avaliador deve encontrar maior valor ordem decrescente with data set #1
+ [x] Avaliador deve encontrar maior valor ordem decrescente with data set #2
+ [x] Avaliador deve encontrar menor valor ordem crescente with data set #0
+ [x] Avaliador deve encontrar menor valor ordem crescente with data set #1
+ [x] Avaliador deve encontrar menor valor ordem crescente with data set #2
+ [x] Avaliador deve buscar os tres maiores lances with data set #0
+ [x] Avaliador deve buscar os tres maiores lances with data set #1
+ [x] Avaliador deve buscar os tres maiores lances with data set #2
+
+Leilao (phpunit\Tests\Models\Leilao)
+ [x] Leilao deve receber lances with data set #0
+ [x] Leilao deve receber lances with data set #1
+ [x] Leilao deve receber lances with data set #2
+
