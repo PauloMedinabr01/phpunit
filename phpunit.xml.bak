@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="vendor/autoload.php"
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
          colors="true"
          testdox="true"
-         verbose="true"
-         stopOnFailure="false">
+         stopOnFailure="false"
+         cacheDirectory=".phpunit.cache">
     <testsuites>
         <testsuite name="Testes">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
+
+    <logging>
+        <testdoxHtml outputFile="tests/phpunit/_output/testdox.html"/>
+        <testdoxText outputFile="tests/phpunit/_output/testdox.txt"/>
+    </logging>
+
+    <coverage>
+        <include>
+            <directory>src</directory>
+        </include>
+        <report>
+            <html outputDirectory="tests/phpunit/_output/coverage-html"/>
+        </report>
+    </coverage>
 </phpunit>

@@ -11,6 +11,7 @@
     "php": "^8.3"
   },
   "scripts": {
-    "tests": "./vendor/bin/phpunit"
+    "pre-test": "mkdir -p tests/phpunit/_output",
+    "tests": "./vendor/bin/phpunit --bootstrap vendor/autoload.php --coverage-html tests/phpunit/_output/coverage-html"
   }
 }
